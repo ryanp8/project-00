@@ -90,9 +90,9 @@ void print_library(struct song_node **library) {
 
 
 void shuffle(struct song_node **library) {
-    int i, j;
+    int i;
     for (i = 0; i < 27; i++) {
-        // printf("%f\n", rand() % 100000 / 100000.0);
+        int j;
         char num_songs = rand() % 100000 / 100000.0 * list_length(library[i]);
         for (j = 0; j < num_songs; j++) {
             struct song_node *random_song = get_random(library[i]);
