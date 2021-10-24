@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #include "library.h"
 #include "linked_list.h"
@@ -50,14 +51,14 @@ struct song_node *search_artist(struct song_node **library, char artist[100]) {
 
 
 void print_by_letter(struct song_node **library, char letter) {
-    char index;
-    if (letter >= 65 && letter <= 90) {
-        index = letter - 65;
+    if (letter < 97) {
+        letter += 32;
     }
-    else {
-        index = 26;
+
+    if (letter >= 97 && letter <= 122) {
+        letter -= 97;
     }
-    struct song_node *head = library[index];
+    struct song_node *head = library[letter];
 
     print_list(head);
 }
@@ -66,7 +67,13 @@ void print_by_letter(struct song_node **library, char letter) {
 void print_by_artist(struct song_node **library, char artist[100]) {
     printf("Printing [%s]: ", artist);
     struct song_node *head = search_artist(library, artist);
-    print_list(head);
+    printf("[ ");
+    while (head && strcmp(head->artist, artist) == 0) {
+        print_node(head);
+        printf(" ");
+        head++;
+    }
+    printf("]\n");
 }
 
 

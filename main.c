@@ -51,10 +51,11 @@ int main() {
     printf("===============================\n\n");
     printf("Testing find_artist:\n");
     printf("Looking for Coldplay: ");
-    print_list(find_artist(head, "Coldplay"));
+    print_node(find_artist(head, "Coldplay"));
 
-    printf("Looking for Fun: ");
-    print_list(find_artist(head, "Fun"));
+    printf("\nLooking for Fun: ");
+    print_node(find_artist(head, "Fun"));
+    printf("\n");
 
     printf("===============================\n\n");
     printf("Testing songcmp:\n");
@@ -100,12 +101,28 @@ int main() {
     print_list(head);
 
     printf("===============================\n\n");
+    printf("Testing insert_front: \n");
+    head = insert_front(head,"Perfect", "Ed Sheeran");
+    head = insert_front(head,"Beautiful People", "Ed Sheeran");
+    head = insert_front(head,"Photograph", "Ed Sheeran");
+    head = insert_front(head,"Castle on the Hill", "Ed Sheeran");
+    head = insert_front(head,"Yellow", "Coldplay");
+    head = insert_front(head,"good 4 u", "Olivia Rodrigo");
+    head = insert_front(head,"We Are Young", "Fun");
+    head = insert_front(head,"Some Nights", "Fun");
+    head = insert_front(head,"Style", "Taylor Swift");
+    head = insert_front(head,"Shake if Off", "Taylor Swift");
+    head = insert_front(head,"22", "Taylor Swift");
+    head = insert_front(head,"Summer", "Calvin Harris");
+    print_list(head);
+
+    printf("===============================\n\n");
     printf("MUSIC LIBRARY TESTS\n");
     struct song_node **library = create_library();
 
     printf("===============================\n\n");
     printf("Testing print_by_letter:\n");
-    print_by_letter(library, 'a');
+    print_by_letter(library, 't');
 
     printf("===============================\n\n");
     printf("Testing print_library:\n");
@@ -128,10 +145,17 @@ int main() {
     printf("===============================\n\n");
     printf("Testing print_by_letter:\n");
     print_by_letter(library, 'e');
+    print_by_letter(library, 't');
 
     printf("===============================\n\n");
     printf("Testing print_library:\n");
     print_library(library);
+
+    printf("===============================\n\n");
+    printf("Testing print_by_artist:\n");
+    printf("Expect empty: ");
+    print_by_artist(library, "Bruno Mars");
+    print_by_artist(library, "Calvin Harris");
 
     printf("===============================\n\n");
     printf("Testing search_song:\n");
@@ -148,15 +172,15 @@ int main() {
 
     printf("===============================\n\n");
     printf("Testing search_artist:\n");
-    printf("Looking for Ed Sheeran");
+    printf("Looking for Ed Sheeran: ");
     result = search_artist(library, "Ed Sheeran");
     print_list(result);
 
-    printf("Looking for Fun");
+    printf("Looking for Fun: ");
     result = search_artist(library, "Fun");
     print_list(result);
 
-    printf("Looking for Coldplay");
+    printf("Looking for Coldplay: ");
     result = search_artist(library, "Coldplay");
     print_list(result);
 
@@ -181,11 +205,6 @@ int main() {
     add_song(library, create_song_node("Hot N Cold", "Katy Perry", NULL));
     add_song(library, create_song_node("Uptown Funk", "Bruno Mars", NULL));
     print_library(library);
-    
-    printf("===============================\n\n");
-    printf("Testing print_by_artist:\n");
-    print_by_artist(library, "Bruno Mars");
-    print_by_artist(library, "Coldplay");
     
     printf("\n");
     return 0;
